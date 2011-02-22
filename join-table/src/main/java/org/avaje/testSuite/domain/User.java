@@ -35,6 +35,9 @@ public class User implements Serializable {
     private String password;
     private String firstName;
     private String lastName;
+
+    @ManyToOne
+    @JoinTable(name = "USER_ORGANIZATION", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ORGANIZATION_ID"))
     private Organization organization;
  
     public User() {
@@ -87,9 +90,6 @@ public class User implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    @ManyToOne
-    @JoinTable(name = "USER_ORGANIZATION", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ORGANIZATION_ID"))
     public Organization getOrganization() {
         return organization;
     }

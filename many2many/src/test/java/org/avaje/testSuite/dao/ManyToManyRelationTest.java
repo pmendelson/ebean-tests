@@ -11,7 +11,10 @@ import junit.framework.Assert;
 
 import org.avaje.testSuite.domain.Author;
 import org.avaje.testSuite.domain.Book;
+import org.hibernate.dialect.MySQL5Dialect;
 import org.junit.Test;
+
+import com.avaje.ebean.config.ServerConfig;
 
 /**
  * @author Administrator
@@ -45,7 +48,7 @@ public class ManyToManyRelationTest extends AbstractEBeanDaoTestCase {
             book.setAuthors(authorSet);
             book1.setAuthors(authorSet);
             logger.info("save book");
-
+//new ServerConfig().setDatabasePlatform(new MySQL5Dialect());
             ebeanServer.save(book);
             ebeanServer.save(book1);
             logger.info("post save book");
@@ -62,9 +65,8 @@ public class ManyToManyRelationTest extends AbstractEBeanDaoTestCase {
             ebeanServer.commitTransaction();
             System.out.println("Done");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.warn("test",e);
             Assert.fail();
-        } finally {
         }
 
     }

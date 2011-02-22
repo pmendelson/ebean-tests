@@ -25,10 +25,12 @@
       </list>
     </property>
     <property name="dataSource" ref="dataSource" />
+    <property name="databasePlatform" ref="mysqlPlatform"/>
 
     <property name="ddlGenerate" value="true" />
     <property name="ddlRun" value="false" />
   </bean>
+  <bean id="mysqlPlatform" class="com.avaje.ebean.config.dbplatform.MySqlPlatform"/>
 
   <!-- Ebean server -->
   <bean id="ebeanServer" class="com.avaje.ebean.springsupport.factory.EbeanServerFactoryBean">
